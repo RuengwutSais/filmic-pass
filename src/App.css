@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  @apply font-poppins;
+}
+
+body {
+  background-color: #19181a;
+}
