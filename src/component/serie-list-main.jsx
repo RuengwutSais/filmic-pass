@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+import noImage from "../assets/no-img.png";
 
 const SerieListMain = ({ series }) => {
   const getColorClass = (voteAverage) => {
@@ -24,11 +25,19 @@ const SerieListMain = ({ series }) => {
               className="w-96 m-4 rounded shadow-md bg-gray relative overflow-hidden cursor-pointer group"
               key={serie.id}
             >
-              <img
-                src={IMAGE_URL + serie.poster_path}
-                alt=""
-                className="w-full overflow-y-hidden group-hover:scale-110 ease-in-out duration-300"
-              />
+              {serie.poster_path ? (
+                <img
+                  src={IMAGE_URL + serie.poster_path}
+                  alt=""
+                  className="w-full overflow-y-hidden group-hover:scale-110 ease-in-out duration-300 object-cover"
+                />
+              ) : (
+                <img
+                  src={noImage}
+                  alt=""
+                  className="w-full overflow-y-hidden group-hover:scale-110 ease-in-out duration-300 object-cover"
+                />
+              )}
               <div className="text-white font-semibold text-xl flex justify-between p-4 items-center">
                 <h3>{serie.name}</h3>
                 <span

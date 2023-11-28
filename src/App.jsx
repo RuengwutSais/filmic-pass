@@ -18,6 +18,8 @@ function App() {
   const [series, setSeries] = useState([]);
   const [playing, setPlaying] = useState([]);
   const [onair, setOnair] = useState([]);
+  const [trendTV, setTrendTV] = useState([]);
+  const [trendMovie, setTrendMovie] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -45,7 +47,7 @@ function App() {
               include_null_first_air_dates: false,
               language: "en-US",
               page: 1,
-              sort_by: "popularity.desc",
+              sort_by: "vote_average.desc",
             },
             ...options,
           })
@@ -65,7 +67,7 @@ function App() {
               include_null_first_air_dates: false,
               language: "en-US",
               page: 1,
-              sort_by: "popularity.desc",
+              sort_by: "vote_average.desc",
             },
             ...options,
           })
@@ -103,6 +105,36 @@ function App() {
           .then((onairResponse) => {
             setOnair(onairResponse.data.results);
             console.log("Now On Air:", onairResponse.data.results);
+          })          
+          .catch((error) => console.error(error));
+
+          // Trending Movies
+
+          axios
+          .get("https://api.themoviedb.org/3/trending/movie/week", {
+            params: {
+              language: "en-US",
+              page: 1,
+            },
+            ...options,
+          })
+          .then((trendMovieResponse) => {
+            setTrendMovie(trendMovieResponse.data.results);
+            console.log("Trending Movies:", trendMovieResponse.data.results);
+          })          
+          .catch((error) => console.error(error));
+
+          axios
+          .get("https://api.themoviedb.org/3/trending/tv/week", {
+            params: {
+              language: "en-US",
+              page: 1,
+            },
+            ...options,
+          })
+          .then((trendTVResponse) => {
+            setTrendTV(trendTVResponse.data.results);
+            console.log("Trending Series:", trendTVResponse.data.results);
           })          
           .catch((error) => console.error(error));
 
@@ -186,7 +218,7 @@ function App() {
       <>
         <NavbarComponent onSearch={handleSearch} />
         <Routes>
-          <Route path="/" element={<Home playing={playing} onair = {onair} />} />
+          <Route path="/" element={<Home playing={playing} onair = {onair} trendMovie={trendMovie} trendTV={trendTV} />} />
           <Route path="/movies" element={<MovieListMain movies={movies} />} />
           <Route path="/series" element={<SerieListMain series={series} />} />
           <Route
