@@ -13,7 +13,14 @@ const SearchResults = ({ searchResults }) => {
       return "text-rating-red";
     }
   };
+  const convertDate = (dateString) => {
+    const dateObject = new Date(dateString);
 
+    const options = { year: "numeric", month: "short", day: "numeric" };
+
+    const formattedDate = dateObject.toLocaleDateString("en-US", options);
+    return formattedDate;
+  };
   return (
     <>
       {searchResults.length === 0 ? (
@@ -25,7 +32,7 @@ const SearchResults = ({ searchResults }) => {
           {searchResults.map((result) => {
             const name = result.name || result.title;
             const releaseDate = result.first_air_date || result.release_date;
-
+            const formatdate = convertDate(releaseDate);
             const colorClass = getColorClass(result.vote_average);
 
             return (
@@ -57,7 +64,7 @@ const SearchResults = ({ searchResults }) => {
                   </span>
                 </div>
                 <p className="p-4 text-white text-xl absolute bottom-0">
-                  Relese Date : {releaseDate}
+                  Relese Date : {formatdate}
                 </p>
                 </div>
                 <div
