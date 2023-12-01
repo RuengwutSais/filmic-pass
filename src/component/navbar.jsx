@@ -32,7 +32,7 @@ const NavbarComponent = ({ onSearch }) => {
   return (
     <header className="bg-black w-full sticky top-0 left-0 z-20">
       <div className="md:flex items-center justify-between bg-black py-4 md:px-10 px-7">
-        <a className="text-white font-bold text-2xl cursor-pointer flex items-center gap-1" href="/">
+        <a className="text-white font-bold text-2xl cursor-pointer flex items-center gap-1 w-fit" href="/">
             <img src={filmLogo} alt="film-logo" className="h-8 w-8" />
             <span>
               <h1 className="font-bold">FilmicPass</h1>

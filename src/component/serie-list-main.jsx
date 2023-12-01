@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useEffect } from "react";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 import noImage from "../assets/no-img.png";
@@ -13,48 +14,65 @@ const SerieListMain = ({ series }) => {
       return "text-rating-red";
     }
   };
+  const convertDate = (dateString) => {
+    const dateObject = new Date(dateString);
+
+    const options = { year: "numeric", month: "short", day: "numeric" };
+
+    const formattedDate = dateObject.toLocaleDateString("en-US", options);
+    return formattedDate;
+  };
+  useEffect(() => {
+    scrollToTop()
+  },[]);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
   return (
     <>
       <main className="flex flex-wrap justify-center m-4">
         {series.map((serie) => {
           const colorClass = getColorClass(serie.vote_average);
+          const formatdate = convertDate(serie.first_air_date);
 
           return (
             <div
               id="movie"
-              className="w-96 m-4 rounded shadow-md bg-gray relative overflow-hidden cursor-pointer group"
+              className="m-4 rounded-lg shadow-md bg-gray relative overflow-hidden cursor-pointer group"
               key={serie.id}
             >
               {serie.poster_path ? (
                 <img
                   src={IMAGE_URL + serie.poster_path}
                   alt=""
-                  className="w-full overflow-y-hidden group-hover:scale-110 ease-in-out duration-300 object-cover"
+                  className="w-96 h-128 overflow-y-hidden group-hover:scale-110 ease-in-out duration-300 object-cover"
                 />
               ) : (
                 <img
                   src={noImage}
                   alt=""
-                  className="w-full overflow-y-hidden group-hover:scale-110 ease-in-out duration-300 object-cover"
+                  className="w-96 h-128 overflow-y-hidden group-hover:scale-110 ease-in-out duration-300 object-cover"
                 />
               )}
-              <div className="text-white font-semibold text-xl flex justify-between p-4 items-center">
-                <h3>{serie.name}</h3>
-                <span
-                  className={`bg-black p-2 rounded font-bold ${colorClass} w-12 items-center text-center`}
-                >
-                  {serie.vote_average}
-                </span>
+              <div className="h-52 w-96">
+                <div className="text-white font-semibold text-xl flex justify-between p-4 items-center">
+                  <h3>{serie.name}</h3>
+                  <span
+                    className={`bg-black p-2 rounded font-bold ${colorClass} w-12 items-center text-center`}
+                  >
+                    {serie.vote_average}
+                  </span>
+                </div>
+                <p className="p-4 text-white text-xl absolute bottom-0">
+                  First Air Date : {formatdate}
+                </p>
               </div>
-              <p className="p-4 text-white text-xl">
-                Relese Date : {serie.first_air_date}
-              </p>
 
               <div
                 className="absolute left-0 right-0 bottom-0 bg-white text-black p-4 max-h-full ease-in-out duration-300 translate-y-full 
-              group-hover:translate-y-0 h-52 overflow-y-scroll scroll-smooth"
+              group-hover:translate-y-0 h-96 overflow-y-scroll scroll-smooth"
               >
-                <h3 className="font-bold text-xl">Overview</h3>
+                <h3 className="font-bold text-xl text-red">Overview</h3>
                 <div className=" text-justify">{serie.overview}</div>
               </div>
             </div>

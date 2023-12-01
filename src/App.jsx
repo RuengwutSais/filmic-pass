@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from "axios";
@@ -28,6 +29,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const options = {
           method: "GET",
           headers: {
@@ -47,7 +49,7 @@ function App() {
               include_null_first_air_dates: false,
               language: "en-US",
               page: 1,
-              sort_by: "vote_average.desc",
+              sort_by: "revenue.desc",
             },
             ...options,
           })
@@ -67,7 +69,7 @@ function App() {
               include_null_first_air_dates: false,
               language: "en-US",
               page: 1,
-              sort_by: "vote_average.desc",
+              sort_by: "popularity.desc",
             },
             ...options,
           })
@@ -151,6 +153,7 @@ function App() {
 
   const handleSearch = async (searchTerm) => {
     try {
+      setLoading(true);
       if (searchTerm.trim() === "") {
         setSearchResults([]);
         console.log("Search term is empty");
@@ -212,6 +215,8 @@ function App() {
   if (error) {
     return console.log(error.massage);
   }
+
+  
 
   return (
     <Router>

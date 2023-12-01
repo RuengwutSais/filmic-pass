@@ -4,6 +4,7 @@
 
 *{
   @apply font-poppins;
+  scroll-behavior: smooth;
 }
 
 body {
