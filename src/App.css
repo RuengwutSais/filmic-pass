@@ -7,6 +7,22 @@
   scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar{
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track{
+  background: #4e4e50;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #fc2444;
+  border-radius: 8px;
+}
+
 body {
   background-color: #19181a;
 }
