@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
-const Home = ({ playing, onair, trendMovie, trendTV }) => {
+const Home = ({ playing, onair, trendMovie, trendTV, genres }) => {
   const getColorClass = (voteAverage) => {
     if (voteAverage > 7) {
       return "text-rating-green";
@@ -21,11 +21,12 @@ const Home = ({ playing, onair, trendMovie, trendTV }) => {
     const formattedDate = dateObject.toLocaleDateString("en-US", options);
     return formattedDate;
   };
+
   useEffect(() => {
     scrollToTop();
-  },[]);
+  }, []);
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
   return (
     <div className="p-4 m-4 rounded">
@@ -64,7 +65,7 @@ const Home = ({ playing, onair, trendMovie, trendTV }) => {
                     </div>
                     <div
                       className="absolute left-0 right-0 bottom-0 bg-white text-black p-4 max-h-full ease-in-out duration-300 translate-y-full 
-              group-hover:translate-y-0 h-96 overflow-y-scroll"
+              group-hover:translate-y-0 h-96 overflow-y-auto"
                     >
                       <h3 className="font-bold text-xl text-red">Overview</h3>
                       <div className="text-justify">{play.overview}</div>
@@ -108,7 +109,7 @@ const Home = ({ playing, onair, trendMovie, trendTV }) => {
                     </div>
                     <div
                       className="absolute left-0 right-0 bottom-0 bg-white text-black p-4 ease-in-out duration-300 translate-y-full 
-              group-hover:translate-y-0 h-96 overflow-y-scroll"
+              group-hover:translate-y-0 h-96 overflow-y-auto"
                     >
                       <h3 className="font-bold text-xl text-red">Overview</h3>
                       <div className=" text-justify">{onair.overview}</div>
@@ -157,7 +158,7 @@ const Home = ({ playing, onair, trendMovie, trendTV }) => {
                     </div>
                     <div
                       className="absolute left-0 right-0 bottom-0 bg-white text-black p-4 ease-in-out duration-300 translate-y-full 
-              group-hover:translate-y-0 h-96 overflow-y-scroll"
+              group-hover:translate-y-0 h-96 overflow-y-auto"
                     >
                       <h3 className="font-bold text-xl text-red">Overview</h3>
                       <div className=" text-justify">{trendMovie.overview}</div>
@@ -201,7 +202,7 @@ const Home = ({ playing, onair, trendMovie, trendTV }) => {
                     </div>
                     <div
                       className="absolute left-0 right-0 bottom-0 bg-white text-black p-4 ease-in-out duration-300 translate-y-full 
-              group-hover:translate-y-0 h-96 overflow-y-scroll"
+              group-hover:translate-y-0 h-96 overflow-y-auto"
                     >
                       <h3 className="font-bold text-xl text-red">Overview</h3>
                       <div className=" text-justify">{trendTV.overview}</div>

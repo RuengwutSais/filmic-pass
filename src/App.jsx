@@ -224,7 +224,7 @@ function App() {
         <NavbarComponent onSearch={handleSearch} />
         <Routes>
           <Route path="/" element={<Home playing={playing} onair = {onair} trendMovie={trendMovie} trendTV={trendTV} />} />
-          <Route path="/movies" element={<MovieListMain movies={movies} />} />
+          <Route path="/movies" element={<MovieListMain movies={movies}/>} />
           <Route path="/series" element={<SerieListMain series={series} />} />
           <Route
             path="/search"

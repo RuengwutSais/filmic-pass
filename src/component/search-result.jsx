@@ -69,7 +69,7 @@ const SearchResults = ({ searchResults }) => {
                 </div>
                 <div
                   className="absolute left-0 right-0 bottom-0 bg-white text-black p-4 max-h-full ease-in-out duration-300 translate-y-full 
-              group-hover:translate-y-0 h-96 overflow-y-scroll scroll-smooth"
+              group-hover:translate-y-0 h-96 overflow-y-auto scroll-smooth"
                 >
                   <h3 className="font-bold text-xl text-red">Overview</h3>
                   <div className=" text-justify">{result.overview}</div>
