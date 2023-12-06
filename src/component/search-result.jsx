@@ -24,7 +24,7 @@ const SearchResults = ({ searchResults }) => {
   return (
     <>
       {searchResults.length === 0 ? (
-        <div className="h-screen w-full flex items-center justify-center absolute">
+        <div className="h-screen w-full flex items-center justify-center relative">
           <h3 className="text-white text-2xl">No Result Found</h3>
         </div>
       ) : (
@@ -54,18 +54,22 @@ const SearchResults = ({ searchResults }) => {
                     className="w-96 h-128 overflow-y-hidden group-hover:scale-110 ease-in-out duration-300 object-cover"
                   />
                 )}
-                <div className="h-52 w-96">
-                <div className="text-white font-semibold text-xl flex justify-between p-4 items-center">
-                  <h3>{name}</h3>
-                  <span
-                    className={`bg-black p-2 rounded font-bold ${colorClass} w-12 items-center text-center`}
-                  >
-                    {result.vote_average.toFixed(1)}
-                  </span>
-                </div>
-                <p className="p-4 text-white text-xl absolute bottom-0">
-                  Relese Date : {formatdate}
-                </p>
+                <div className="h-52 w-auto">
+                    <div className="text-white font-semibold text-xl flex flex-row justify-between p-4 gap-2 items-center">
+                      <div className="w-60">
+                      <h3>
+                        {name}
+                      </h3>
+                      </div>
+                      <span
+                        className={`bg-black p-2 rounded font-bold ${colorClass} w-16 items-center text-center`}
+                      >
+                        {result.vote_average.toFixed(1)}
+                      </span>
+                    </div>
+                    <p className="p-4 text-white text-xl absolute bottom-0">
+                      Release Date - {formatdate}
+                    </p>
                 </div>
                 <div
                   className="absolute left-0 right-0 bottom-0 bg-white text-black p-4 max-h-full ease-in-out duration-300 translate-y-full 

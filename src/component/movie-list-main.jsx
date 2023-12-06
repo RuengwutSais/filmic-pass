@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
 
-
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 import noImage from "../assets/no-img.png";
 
@@ -24,10 +23,10 @@ const MovieListMain = ({ movies }) => {
     return formattedDate;
   };
   useEffect(() => {
-    scrollToTop()
-  },[]);
+    scrollToTop();
+  }, []);
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
   return (
     <>
@@ -35,7 +34,6 @@ const MovieListMain = ({ movies }) => {
         {movies.map((movie) => {
           const colorClass = getColorClass(movie.vote_average);
           const formatdate = convertDate(movie.release_date);
-
 
           return (
             <div
@@ -56,17 +54,19 @@ const MovieListMain = ({ movies }) => {
                   className="w-96 h-128 overflow-y-hidden group-hover:scale-110 ease-in-out duration-300 object-cover"
                 />
               )}
-              <div className="h-52 w-96">
-                <div className="text-white font-semibold text-xl flex justify-between p-4 items-center">
-                  <h3>{movie.title}</h3>
+              <div className="h-52 w-auto">
+                <div className="text-white font-semibold text-xl flex justify-between p-4 gap-2 items-center">
+                  <div className="w-60">
+                    <h3>{movie.title}</h3>
+                  </div>
                   <span
-                    className={`bg-black p-2 rounded font-bold ${colorClass} w-12 items-center text-center`}
+                    className={`bg-black p-2 rounded font-bold ${colorClass} w-16 items-center text-center`}
                   >
                     {movie.vote_average}
                   </span>
                 </div>
                 <p className="p-4 text-white text-xl absolute bottom-0">
-                  Release Date : {formatdate}
+                  Release Date - {formatdate}
                 </p>
               </div>
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -54,7 +55,7 @@ const NavbarComponent = ({ onSearch }) => {
           {Links.map((link) => (
             <li
               key={link.linkId}
-              className="md:ml-8 md:my-0 my-7 font-semibold text-xl text-white hover:text-red transition-all duration-100"
+              className="md:ml-8 md:my-0 my-7 font-semibold text-xl text-white hover:text-red ease-in-out duration-300"
             >
               <Link to={link.link}>{link.name}</Link>
             </li>
@@ -71,7 +72,7 @@ const NavbarComponent = ({ onSearch }) => {
               onKeyDown={handleKeyDown}
             />
             <button
-              className="flex-shrink-0 text-white py-2 md:ml-2 w-12 bg-transparent items-center justify-center rounded-full rounded-l-none hover:text-red transition-all hover:transform hover:scale-125 duration-100"
+              className="flex-shrink-0 text-white py-2 md:ml-2 w-12 bg-transparent items-center justify-center rounded-full rounded-l-none hover:text-red hover:scale-125 duration-300"
               type="button"
               onClick={handleSearch}
             >

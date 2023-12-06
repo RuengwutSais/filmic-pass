@@ -23,10 +23,10 @@ const SerieListMain = ({ series }) => {
     return formattedDate;
   };
   useEffect(() => {
-    scrollToTop()
-  },[]);
+    scrollToTop();
+  }, []);
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
   return (
     <>
@@ -54,17 +54,19 @@ const SerieListMain = ({ series }) => {
                   className="w-96 h-128 overflow-y-hidden group-hover:scale-110 ease-in-out duration-300 object-cover"
                 />
               )}
-              <div className="h-52 w-96">
-                <div className="text-white font-semibold text-xl flex justify-between p-4 items-center">
-                  <h3>{serie.name}</h3>
+              <div className="h-52 w-auto">
+                <div className="text-white font-semibold text-xl flex justify-between p-4 gap-2 items-center">
+                  <div className="w-60">
+                    <h3>{serie.name}</h3>
+                  </div>
                   <span
-                    className={`bg-black p-2 rounded font-bold ${colorClass} w-12 items-center text-center`}
+                    className={`bg-black p-2 rounded font-bold ${colorClass} w-16 items-center text-center`}
                   >
                     {serie.vote_average}
                   </span>
                 </div>
                 <p className="p-4 text-white text-xl absolute bottom-0">
-                  First Air Date : {formatdate}
+                  First Air Date - {formatdate}
                 </p>
               </div>
 

@@ -9,6 +9,7 @@ import MovieListMain from "./component/movie-list-main";
 import SerieListMain from "./component/serie-list-main";
 import SearchResults from "./component/search-result";
 import BeatLoader from "react-spinners/BeatLoader";
+import FooterComponent from "./component/footer";
 
 const ACCESS_TOKEN =
   "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZmEzZDVlZTUwMTg3ZWUxOTVkODgyZGM2YzNhZmE0MSIsInN1YiI6IjY1NWRlZTU2N2YyZDRhMDBlYTI1YWZjMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OPkonx5pj5BAUpl_HnceE3unt25MQgJDUCXEwX6Vsbk";
@@ -69,7 +70,7 @@ function App() {
               include_null_first_air_dates: false,
               language: "en-US",
               page: 1,
-              sort_by: "popularity.desc",
+              sort_by: "vote_count.desc",
             },
             ...options,
           })
@@ -87,6 +88,7 @@ function App() {
             params: {
               language: "en-US",
               page: 1,
+              sort_by: 'primary_release_date.desc',
             },
             ...options,
           })
@@ -231,6 +233,7 @@ function App() {
             element={<SearchResults searchResults={searchResults} />}
           />
         </Routes>
+        <FooterComponent />
       </>
     </Router>
   );
