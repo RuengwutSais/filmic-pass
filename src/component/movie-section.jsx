@@ -56,7 +56,7 @@ const Home = ({ playing, onair, trendMovie, trendTV }) => {
                           <h3>{play.title}</h3>
                         </div>
                         <span
-                          className={`bg-black p-2 rounded font-bold ${colorClass} w-16 items-center text-center`}
+                          className={`bg-black p-2 rounded font-bold ${colorClass} w-16 items-center text-centery`}
                         >
                           {play.vote_average.toFixed(1)}
                         </span>
